@@ -75,5 +75,15 @@ define(['./module', 'darkwallet', 'util/fiat', 'mnemonicjs', 'dwutil/currencyfor
       $scope.yourSeedHex = seed;
       $scope.yourSeedWords = m.toWords().join(' ');
   };
+  
+  $scope.enableLinkHandler = function() {
+    console.log("hola")
+    var url = "chrome-extension://bikdmabehbjefmcjdkkpldegkjdeoagp/html/index.html#/send?uri=%s";
+    try {
+      navigator.registerProtocolHandler("bitcoin", url, "Dark Wallet")
+    } catch (e) {
+      console.log("error")
+    }
+  };
 }]);
 });

@@ -82,6 +82,11 @@
           <select ng-model="selectedFiat" ng-options="key as value.name for (key , value) in fiatCurrencies" ng-change="fiatCurrencyChanged()">
           </select>
         </div>
+        <div class="panel">
+          <h5>Link handler</h5>
+          <label>Use Dark Wallet to handle bitcoin: links.</label>
+          <button ng-click="enableLinkHandler()" class="button small radius expand">Enable</button>
+        </div>
         <a class="button fa fa-flask postfix" href="#tools">Tools</a>
       </div>
 </div>

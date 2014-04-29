@@ -24,6 +24,9 @@
       "js": ["js/frontend/scripts/inject.js"]
     }
   ],
+  "web_accessible_resources": [
+    "html/index.html"
+  ],
   "options_page": "html/index.html#/settings",
   "minimum_chrome_version": "34.0"
 }
