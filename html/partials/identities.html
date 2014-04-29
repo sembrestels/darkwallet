@@ -13,7 +13,7 @@
     <ul class="large-block-grid-5 medium-block-grid-4 small-block-grid-2">
       <li ng-repeat="identityName in availableIdentities">
         <div class="panel radius">
-          <h4>{{identityName}}</h4>
+          <h4 editable-text="identityName" e-form="form" onaftersave="renameIdentity(availableIdentities[$index], identityName)" buttons="no">{{identityName}}</h4>
           <h6 ng-show="identities.hasOwnProperty(identityName)">Balance: {{identities[identityName].wallet.balance.confirmed | currencyPresenter}}</h6>
           <button ng-click="selectIdentity(identityName)" ng-hide="identityName == currentIdentity" class="radius tiny expand">Use this identity</button>
           <div class="row collapse">
@@ -21,10 +21,10 @@
               <button ng-click="backupIdentity(identityName)" class="tiny expand">Backup</button>
             </div>
             <div class="small-4 columns">
-              <button class="tiny expand">Rename</button>
+              <button class="tiny expand" ng-click="form.$show()">Rename</button>
             </div>
             <div class="small-4 columns">
-              <button class="tiny expand">Delete</button>
+              <button class="tiny expand" ng-click="deleteIdentity(identityName)">Delete</button>
             </div>  
           </div>
         </div>

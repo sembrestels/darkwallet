@@ -19,6 +19,13 @@ define(['./module', 'frontend/port', 'darkwallet', 'sjcl'], function (controller
         var identityIdx = $scope.availableIdentities.indexOf(identityName);
         DarkWallet.core.loadIdentity(identityIdx);
     };
-
+    
+    $scope.renameIdentity = function(identityName, newName) {
+        DarkWallet.getKeyRing().rename(identityName, newName);
+    };
+    
+    $scope.deleteIdentity = function(identityName) {
+      DarkWallet.getKeyRing().delete(identityName);
+    };
   }]);
 });

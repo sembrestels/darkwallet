@@ -135,6 +135,39 @@ IdentityKeyRing.prototype.save = function(name, data, callback) {
 };
 
 /**
+ * Renames an indentity
+ * @param {String} name Old name
+ * @param {String} newname New name
+ * @param {Function} callback
+ */
+IdentityKeyRing.prototype.rename = function(name, newname, callback) {
+    var index = this.availableIdentities.indexOf(name);
+    if (index > -1) {
+        this.availableIdentities[index] = newname;
+    }
+    chrome.storage.local.get(DW_NS+name, function(obj) {
+        var pars = {};
+        pars[DW_NS+newname] = obj[DW_NS+name];
+        chrome.storage.local.set(pars, function() {
+            chrome.storage.local.remove(DW_NS+name, callback);
+        });
+    });
+};
+
+/**
+ * Deletes an identity
+ * @param {String} name
+ * @param {Function} callback
+ */
+IdentityKeyRing.prototype.delete = function(name, callback) {
+    var index = this.availableIdentities.indexOf(name);
+    if (index > -1) {
+        this.availableIdentities.splice(index, 1);
+    }
+    chrome.storage.local.remove(DW_NS+name, callback);
+};
+
+/**
  * Get raw data for an identity
  * @param {String} name Identity identifier.
  * @param {Function} callback Callback providing results for the function.
