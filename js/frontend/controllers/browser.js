@@ -165,13 +165,6 @@ define(['./module', 'darkwallet', 'frontend/port', 'bitcoinjs-lib', 'util/btc'],
   }
 
   /**
-   * Open a link. Currently searches but could go to some url
-   */
-  $scope.openLink = function(data) {
-      $scope.search(data);
-  }
-
-  /**
    * Handle route parameters so we can receive url like #browser/<search>
    */
   if ($routeParams.search) {

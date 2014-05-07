@@ -9,7 +9,7 @@
 		<a href="" tooltip="Select from contacts" ng-click="modals.open('pick-contact', {field: txHash}, search)" class="fa button square righted fa-users"></a>
       </div>
       <div class="large-2 columns">
-          <a class="button postfix fa fa-search" href="#browser">Search</a>
+          <a class="button postfix fa fa-search" href="#/browser">Search</a>
       </div>
   </form>
 </div>
@@ -27,9 +27,9 @@
 	  <h4>Inputs</h4>
 	  <div class="row" ng-repeat="anIn in tx.ins">
 	      <div class="large-12 columns">
-	          <div ng-show="anIn.address.notes!='coinbase'"><a ng-click="openLink(anIn.outpoint.hash)">{{anIn.outpoint.hash.slice(0,48)}}...</a>:{{anIn.outpoint.index}}</div>
+	          <div ng-show="anIn.address.notes!='coinbase'"><a ng-href="#/browser/{{anIn.outpoint.hash}}">{{anIn.outpoint.hash.slice(0,48)}}...</a>:{{anIn.outpoint.index}}</div>
                   <span class="fa fa-btc" ng-show="anIn.address.notes=='coinbase'"></span>
-	          <a ng-click="openLink(anIn.address.address)">{{anIn.address.address}}</a> {{anIn.address.notes}}
+	          <a ng-click="#/browser/{{anIn.address.address}}">{{anIn.address.address}}</a> {{anIn.address.notes}}
 	      </div>
 	  </div>
       </div>
@@ -37,7 +37,7 @@
           <h4>Outputs</h4>
           <div class="row" ng-repeat="anOut in tx.outs">
 	      <div class="large-8 columns">
-		      <a ng-click="openLink(anOut.address.toString())">{{anOut.address.toString()}}</a>
+		      <a ng-click="#/browser/{{anOut.address.toString()}}">{{anOut.address.toString()}}</a>
 	      </div>
 	      <div class="large-4 columns">
 		      <div>{{anOut.value|currencyPresenter}}</div>
@@ -112,7 +112,7 @@
 	  </div>
 	  <div class="large-3 columns">
              <!-- Tx -->
-             <a ng-click="openLink(row[0])">{{row[0].slice(0,32)}}...</a>
+             <a ng-href="#/browser/{{row[0]}}">{{row[0].slice(0,32)}}...</a>
 	  </div>
 	  <div class="large-1 columns">
              <!-- Index -->
@@ -124,7 +124,7 @@
 	  </div>
 	  <div class="large-3 columns">
              <!-- Tx -->
-             <a ng-show="row[4].length" ng-click="openLink(row[4])">{{row[4].slice(0,32)}}...</a>
+             <a ng-show="row[4].length" ng-href="#/browser/{{row[4]}}">{{row[4].slice(0,32)}}...</a>
              <a ng-show="!row[4].length">{{row[4].slice(0,32)}}...</a>
 	  </div>
 	  <div class="large-1 columns">

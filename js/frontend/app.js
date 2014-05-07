@@ -34,5 +34,9 @@ define([
     // In case we need to initialize something after the application is created.
     app.initialize = function() {
     };
+    app.config(['$compileProvider', function($compileProvider) {
+      // Only allow internal links in the UI
+      $compileProvider.aHrefSanitizationWhitelist("^\s*chrome-extension:\/\/"+chrome.runtime.id);
+    }]);
     return app;
 });
