@@ -9,7 +9,7 @@ define(['./module', 'qrcodejs'], function (directives, QRCode) {
           width : attrs.width,
           height : attrs.height,
           correctLevel : QRCode.CorrectLevel.H,
-          useSVG: true
+          useSVG: false
         });
         qrcode.makeCode(attrs.data);
       }
